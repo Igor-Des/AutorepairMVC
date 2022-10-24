@@ -1,8 +1,8 @@
-﻿using AutorepairShopMVC.Models;
+﻿using AutorepairMVC.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 
-namespace AutorepairShopMVC.Data
+namespace AutorepairMVC.Data
 {
     public class AutorepairContext : DbContext
     {

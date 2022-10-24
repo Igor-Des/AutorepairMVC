@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Xml.Linq;
 
-namespace AutorepairShopMVC.Models
+namespace AutorepairMVC.Models
 {
     public class Car
     {
@@ -34,6 +34,7 @@ namespace AutorepairShopMVC.Models
         public string EngineNumber { get; set; }
 
         [Display(Name = "Дата поступления в автомастерскую")]
+        [DataType(DataType.Date)]
         public DateTime AdmissionDate { get; set; }
 
         public Owner Owner { get; set; }

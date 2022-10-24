@@ -1,12 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.Xml.Linq;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
-namespace AutorepairMVC.Models
+
+namespace AutorepairMVC.ViewModels
 {
-    public class Payment
+    public class PaymentViewModel
     {
-        [Key]
-        [Display(Name = "Код платежа")]
+
         public int PaymentId { get; set; }
 
         [Display(Name = "Код машины")]
@@ -24,13 +24,6 @@ namespace AutorepairMVC.Models
 
         [Display(Name = "Выполненная работа")]
         public string ProgressReport { get; set; }
-
-        public Car Car { get; set; }
-        public Mechanic Mechanic { get; set; }
-
-        public override string ToString()
-        {
-            return PaymentId + " " + CarId + " " + Date + " " + Cost + " " + MechanicId + " " + ProgressReport;
-        }
+        public SortViewModel SortViewModel { get; set; }
     }
 }

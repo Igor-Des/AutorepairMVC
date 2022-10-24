@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Xml.Linq;
 
-namespace AutorepairShopMVC.Models
+namespace AutorepairMVC.Models
 {
     public class Mechanic
     {

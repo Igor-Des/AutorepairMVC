@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace AutorepairShopMVC.Models 
+namespace AutorepairMVC.Models 
 {
     public class Owner
     {
