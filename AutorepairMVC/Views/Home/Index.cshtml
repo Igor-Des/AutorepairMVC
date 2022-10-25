@@ -1,8 +1,39 @@
-﻿@{
+﻿@model AutorepairMVC.ViewModels.HomeViewModel
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
+    <h1 class="display-4">hello world</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
+<table border="1">
+    <caption>all cars</caption>
+    <tr>
+        <th>car id</th>
+        <th>brand</th>
+        <th>power</th>
+        <th>color</th>
+        <th>state number</th>
+        <th>owner name</th>
+        <th>year</th>
+        <th>vin</th>
+        <th>engine number</th>
+        <th>admission date</th>
+    </tr>
+    @foreach (var car in Model.Cars)
+    {
+        <tr>
+            <td>@car.CarId</td>
+            <td>@car.Brand</td>
+            <td>@car.Power</td>
+            <td>@car.Color</td>
+            <td>@car.StateNumber</td>
+            <td>@car.OwnerId</td>
+            <td>@car.Year</td>
+            <td>@car.VIN</td>
+            <td>@car.EngineNumber</td>
+            <td>@car.AdmissionDate</td>
+        </tr>
+    }
+</table>
