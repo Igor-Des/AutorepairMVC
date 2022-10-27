@@ -4,22 +4,22 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">hello world</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Главная / Home page</h1>
 </div>
-<table border="1">
-    <caption>all cars</caption>
+<!-- table for cars-->
+<table class="custom-table table-cars table-cars__home-page">
+    <caption>table with information about cars</caption>
     <tr>
-        <th>car id</th>
-        <th>brand</th>
-        <th>power</th>
-        <th>color</th>
-        <th>state number</th>
-        <th>owner name</th>
-        <th>year</th>
-        <th>vin</th>
-        <th>engine number</th>
-        <th>admission date</th>
+        <th>Код авто</th>
+        <th>Марка</th>
+        <th>Мощность</th>
+        <th>Цвет</th>
+        <th>Гос.Номер</th>
+        <th>Код владельца</th>
+        <th>Год</th>
+        <th>ВИН</th>
+        <th>Номер двигателя</th>
+        <th>Дата поступления</th>
     </tr>
     @foreach (var car in Model.Cars)
     {
@@ -33,7 +33,84 @@
             <td>@car.Year</td>
             <td>@car.VIN</td>
             <td>@car.EngineNumber</td>
-            <td>@car.AdmissionDate</td>
+            <td>@car.AdmissionDate.ToShortDateString()</td>
+        </tr>
+    }
+</table>
+
+<!-- table for mechanics-->
+<table class="custom-table table-mechanics table-mechanics__home-page">
+    <caption>table with information about mechanics</caption>
+    <tr>
+        <th>Код механика</th>
+        <th>Имя</th>
+        <th>Фамилия</th>
+        <th>Отчество</th>
+        <th>Код квалификации</th>
+        <th>Стаж работы(в годах)</th>
+    </tr>
+    @foreach (var mechanic in Model.Mechanics)
+    {
+        <tr>
+            <td>@mechanic.MechanicId</td>
+            <td>@mechanic.FirstName</td>
+            <td>@mechanic.MiddleName</td>
+            <td>@mechanic.LastName</td>
+            <td>@mechanic.QualificationId</td>
+            <td>@mechanic.Experience</td>
+
+        </tr>
+    }
+</table>
+
+<!-- table for owners-->
+<table class="custom-table table-owners table-owners__home-page">
+    <caption>table with information about owners</caption>
+    <tr>
+        <th>Код владельца</th>
+        <th>Имя</th>
+        <th>Фамилия</th>
+        <th>Отчество</th>
+        <th>Номер ВУ</th>
+        <th>Адрес</th>
+        <th>Телефон</th>
+    </tr>
+    @foreach (var owner in Model.Owners)
+    {
+        <tr>
+            <td>@owner.OwnerId</td>
+            <td>@owner.FirstName</td>
+            <td>@owner.MiddleName</td>
+            <td>@owner.LastName</td>
+            <td>@owner.DriverLicenseNumber</td>
+            <td>@owner.Address</td>
+            <td>@owner.Phone</td>
+
+        </tr>
+    }
+</table>
+
+<!-- table for payments-->
+<table class="custom-table table-payments table-payments__home-page">
+    <caption>table with information about payments</caption>
+    <tr>
+        <th>Код платежа</th>
+        <th>ВИН авто</th>
+        <th>Дата</th>
+        <th>Цена</th>
+        <th>Механик</th>
+        <th>Проделанная работа</th>
+    </tr>
+    @foreach (var payment in Model.Payments)
+    {
+        <tr>
+            <td>@payment.PaymentId</td>
+            <td>@payment.CarVIN</td>
+            <td>@payment.Date.ToShortDateString()</td>
+            <td>@payment.Cost</td>
+            <td>@payment.MechanicFIO</td>
+            <td>@payment.ProgressReport</td>
+
         </tr>
     }
 </table>

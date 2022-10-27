@@ -16,3 +16,37 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.custom-table {
+    border-collapse: collapse;
+    border: 3px solid #B58282;
+    font-family: "Lucida Grande", sans-serif;
+}
+
+.custom-table td, .custom-table th {
+    padding: 5px;
+}
+
+.custom-table th {
+    text-align: left;
+    font-size: 14px;
+}
+
+.custom-table tr:nth-child(2n) {
+    background: #e5d9d9;
+}
+
+.custom-table td:last-of-type {
+    text-align: center;
+}
+
+.custom-table a {
+    color: #e57a7a;
+    text-decoration: none;
+    transition: .5s solid;
+}
+
+.custom-table a:hover {
+    color: #e04343;
+    font-weight: bold;
+}

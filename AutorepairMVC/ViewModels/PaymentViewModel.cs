@@ -9,8 +9,8 @@ namespace AutorepairMVC.ViewModels
 
         public int PaymentId { get; set; }
 
-        [Display(Name = "Бренд авто")]
-        public string CarBrand { get; set; }
+        [Display(Name = "ВИН авто")]
+        public string CarVIN { get; set; }
 
         [Display(Name = "Дата платежа")]
         [DataType(DataType.Date)]
@@ -20,7 +20,7 @@ namespace AutorepairMVC.ViewModels
         public int Cost { get; set; }
 
         [Display(Name = "Механик")]
-        public string Mechanic { get; set; }
+        public string MechanicFIO { get; set; }
 
         [Display(Name = "Выполненная работа")]
         public string ProgressReport { get; set; }

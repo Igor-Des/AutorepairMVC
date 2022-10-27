@@ -21,16 +21,18 @@ namespace AutorepairMVC.Controllers
         {
             int numberRows = 10;
             List<Car> cars = _db.Cars.Take(numberRows).ToList();
+            List<Owner> owners = _db.Owners.Take(numberRows).ToList();
             List<Mechanic> mechanics = _db.Mechanics.Take(numberRows).ToList();
+
             List<PaymentViewModel> payments = _db.Payments
                 .OrderByDescending(d => d.Date)
                 .Select(p => new PaymentViewModel
                 {
                     PaymentId = p.PaymentId,
-                    CarBrand = p.Car.Brand,
+                    CarVIN = p.Car.VIN,
                     Date = p.Date,
                     Cost = p.Cost,
-                    Mechanic = p.Mechanic.FirstName,
+                    MechanicFIO = p.Mechanic.FirstName + " " + p.Mechanic.MiddleName,
                     ProgressReport = p.ProgressReport,
                 })
                 .Take(numberRows)
@@ -39,6 +41,7 @@ namespace AutorepairMVC.Controllers
             HomeViewModel homeViewModel = new HomeViewModel
             {
                 Cars = cars,
+                Owners = owners,
                 Mechanics = mechanics,
                 Payments = payments
             };
