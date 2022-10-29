@@ -17,10 +17,10 @@ namespace AutorepairMVC.Data
                 return;   // База данных инициализирована
             }
 
-            int mechanicNumber = 500;
-            int ownerNumber = 1000;
-            int carNumber = 5000;
-            int paymentNumber = 6000;
+            int mechanicNumber = 50;
+            int ownerNumber = 50;
+            int carNumber = 50;
+            int paymentNumber = 50;
             int qualificationNumber = 6;
             Random randObj = new Random(1);
                         
@@ -55,19 +55,19 @@ namespace AutorepairMVC.Data
                 "Mitsubishi", "Nissan", "Opel", "Peugeot", "Porsche", "Renault", "Rover", "SEAT", "Skoda", "Smart", "Subaru",
                 "Suzuki", "Tesla", "Toyota", "Volkswagen", "Volvo" };
             string[] colors = { "Черный", "Белый", "Синий", "Зеленый", "Красный", "Желтый", "Фиолетовый" };
-            string[] carProgress = { "Ремонтподвески","АвтоЭлектрика","Кузовной ремонт","Ремонт двигателя","Развал схождение","Ремонт КПП",
+            string[] carProgress = { "Ремонт подвески","АвтоЭлектрика","Кузовной ремонт","Ремонт двигателя","Развал схождение","Ремонт КПП",
                 "Ремонт топливной","Рулевое управление","Замена ГРМ","Тормозная система","Диагностика автомобилей","Замена автостекла","Замена масла",
                 "Компьютерная диагностика","Шиномонтаж","Автомойка","Полировка","Тюнинг","Ремонт АКПП","Ремонт турбин","Ремонт рулевой рейки","Ремонт глушителей",
-                "Ремонт суппортов","замена сцепления","Ремонт задней балки","Антикоррозийная обработка","Ремонт карданных валов","Регулировка света фар",
+                "Ремонт суппортов","Замена сцепления","Ремонт задней балки","Антикоррозийная обработка","Ремонт карданных валов","Регулировка света фар",
                 "Беспокрасочное удаление вмятин","Ремонт радиаторов","Ремонт гидроусилителей","Аудио, сигнализации","Газовое оборудование","Шины продажа",
-                "Масло продажа","Ремонт печек","замена глушителя","Ремонт дворников","Ремонт полуприцепов","установка ксенона, парктроника","Ремонт фар",
+                "Масло продажа","Ремонт печек","замена глушителя","Ремонт дворников","Ремонт полуприцепов","Установка ксенона/парктроников","Ремонт фар",
                 "Установка фаркопа","Замена сажевого фильтра" };
             string[] charStateNumber = { "A", "B", "E", "I", "K", "M", "H", "O", "P", "C", "T", "X" };
             string randCharForVIN = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
 
+            
 
             int count_charStateNumber = charStateNumber.GetLength(0);
-            int count_qualificationName = qualificationNames.GetLength(0);
             int count_middleNames = middleNames.GetLength(0);
             int count_firstNames = firstNames.GetLength(0);
             int count_lastNames = lastNames.GetLength(0);
@@ -78,10 +78,14 @@ namespace AutorepairMVC.Data
 
             string qualificationName;
             // заполняем таблицу квалификация(должностей) для механиков
-            for (int qualificationsId = 1; qualificationsId <= qualificationNumber; qualificationsId++)
+            for (int qualificationsId = 1; qualificationsId < qualificationNumber; qualificationsId++)
             {
                 qualificationName = qualificationNames[qualificationsId];
-                db.Qualifications.Add(new Qualification { QualificationId = qualificationsId, Name = qualificationName } );
+                db.Qualifications.Add(new Qualification
+                {
+                    Name = qualificationName,
+                    Salary = 600 + (qualificationsId * 200)
+                });
             }
 
             db.SaveChanges();
@@ -101,7 +105,6 @@ namespace AutorepairMVC.Data
                 experience = randObj.Next(1, 20);
                 db.Mechanics.Add(new Mechanic
                 {
-                    MechanicId = mechanicId,
                     FirstName = firstName,
                     MiddleName = middleName,
                     LastName = lastName,
@@ -114,19 +117,19 @@ namespace AutorepairMVC.Data
             string addressOwner;
             int driveLic;
             int phone;
+
             // заполняем таблицу владельцы автомобилей
-            for (int ownerId = 1; ownerId <= ownerNumber; ownerId++)
+            for (int ownerId = 1; ownerId < ownerNumber; ownerId++)
             {
                 firstName = firstNames[randObj.Next(count_firstNames)];
                 middleName = middleNames[randObj.Next(count_middleNames)];
                 lastName = lastNames[randObj.Next(count_lastNames)];
-                addressOwner = address[randObj.Next(count_address)];
+                addressOwner = address[randObj.Next(count_address)] + " " + randObj.Next(100, 999).ToString();
                 driveLic = randObj.Next(1000, 9999);
                 phone = randObj.Next(1111111, 9999999); // 111-11-11 to 999-99-99
 
                 db.Owners.Add(new Owner
                 {
-                    OwnerId = ownerId,
                     FirstName = firstName,
                     MiddleName = middleName,
                     LastName = lastName,
@@ -145,11 +148,22 @@ namespace AutorepairMVC.Data
             string stateNumber;
             int ownerIdRand;
             int year;
-            string VIN = "";
-            string engineNumber = "";
-            string admissionDate;
+            string VIN;
+            string engineNumber;
+            DateTime admissionDate;
+
+
+            static DateTime RandomDay(DateTime start)
+            {
+                Random gen = new Random();
+                //DateTime start = new DateTime(1995, 1, 1);
+                int range = (DateTime.Today - start).Days;
+                return start.AddDays(gen.Next(range));
+            }
+
+
             // заполняем таблицу автомобилей
-            for (int carId = 1; carId <= carNumber; carId++)
+            for (int carId = 1; carId < carNumber; carId++)
             {
                 brand = carBrands[randObj.Next(count_carBrands)];
                 power = randObj.Next(150, 600);
@@ -159,17 +173,19 @@ namespace AutorepairMVC.Data
                     "-" + randObj.Next(1, 7).ToString(); // for example: 3425 AE-7 or 4568 MH-9
                 ownerIdRand = randObj.Next(1, ownerNumber);
                 year = randObj.Next(1990, 2022);
-                for (int i = 0; i < randCharForVIN.Length; i++)
+
+
+                VIN = "";
+                engineNumber = "";
+                for (int i = 0; i < 10; i++)
                 {
                     VIN += randCharForVIN[randObj.Next(randCharForVIN.Length)];
                     engineNumber += randCharForVIN[randObj.Next(randCharForVIN.Length)];
                 }
-                admissionDate = randObj.Next(1, 28).ToString() + "." + randObj.Next(1, 12).ToString() + "." + randObj.Next(2018, 2022).ToString(); // dd.mm.yy
-                phone = randObj.Next(1111111, 9999999); // 111-11-11 to 999-99-99
+                admissionDate = RandomDay(new DateTime(2018, 1, 1));
 
                 db.Cars.Add(new Car
                 {
-                    CarId = carId,
                     Brand = brand,
                     Power = power,
                     Color = color,
@@ -178,7 +194,7 @@ namespace AutorepairMVC.Data
                     Year = year,
                     VIN = VIN,
                     EngineNumber = engineNumber,
-                    AdmissionDate = DateTime.Parse(admissionDate)
+                    AdmissionDate = admissionDate
                 });
             }
 
@@ -186,23 +202,22 @@ namespace AutorepairMVC.Data
 
 
             int carIdRand;
-            string date;
+            DateTime date;
             int cost;
             int mechanicIdRand;
             string progressRep;
             // заполняем таблицу платежей
-            for (int paymentId = 1; paymentId <= paymentNumber; paymentId++)
+            for (int paymentId = 1; paymentId < paymentNumber; paymentId++)
             {
                 carIdRand = randObj.Next(1, carNumber);
-                date = randObj.Next(1, 28).ToString() + "." + randObj.Next(1, 12).ToString() + "." + randObj.Next(2020, 2022).ToString(); // dd.mm.yy
+                date = RandomDay(new DateTime(2020, 1, 1));
                 cost = randObj.Next(100, 400);
                 mechanicIdRand = randObj.Next(1, mechanicNumber);
                 progressRep = carProgress[randObj.Next(count_carProgress)];
                 db.Payments.Add(new Payment
                 {
-                    PaymentId = paymentId,
                     CarId = carIdRand,
-                    Date = DateTime.Parse(date),
+                    Date = date,
                     Cost = cost,
                     MechanicId = mechanicIdRand,
                     ProgressReport = progressRep
