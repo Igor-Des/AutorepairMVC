@@ -1,0 +1,84 @@
+﻿@model IEnumerable<AutorepairMVC.Models.Car>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Brand)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Power)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Color)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StateNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Year)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VIN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EngineNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AdmissionDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Owner)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Brand)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Power)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Color)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StateNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Year)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VIN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EngineNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AdmissionDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Owner.OwnerId)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.CarId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.CarId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.CarId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

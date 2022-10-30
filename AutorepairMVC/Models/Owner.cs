@@ -24,7 +24,7 @@ namespace AutorepairMVC.Models
         public string Address { get; set; }
 
         [Display(Name = "Телефон")]
-        public Int64 Phone { get; set; }
+        public int Phone { get; set; }
         public ICollection<Car> Cars { get; set; }
 
         // ctor for DbInitializer(for future)

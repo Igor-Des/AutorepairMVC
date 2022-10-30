@@ -10,9 +10,6 @@ builder.Services.AddControllersWithViews();
 string connString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<AutorepairContext>(options => options.UseSqlServer(connString));
 
-//in future for Services
-//builder.Services.AddTransient<InterfaceClass, Class>();
-
 // добавление кэширования
 builder.Services.AddMemoryCache();
 // добавление поддержки сессии
@@ -35,17 +32,13 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 // добавляем поддержку статических файлов
 app.UseStaticFiles();
-
-
 // добавляем поддержку сессий
 app.UseSession();
 // добавляем компонент middleware по инициализации базы данных и производим инициализацию базы
 app.UseDbInitializer();
 // добавляем компонент middleware для реализации кэширования и записывем данные в кэш
 //app.UsePaymentCache("Payment"); // in future
-
 app.UseRouting();
-
 app.UseAuthorization();
 
 app.MapControllerRoute(
