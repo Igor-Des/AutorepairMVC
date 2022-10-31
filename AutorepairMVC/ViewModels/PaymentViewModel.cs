@@ -24,5 +24,7 @@ namespace AutorepairMVC.ViewModels
 
         [Display(Name = "Выполненная работа")]
         public string ProgressReport { get; set; }
+        // Порядок сортировки
+        public SortViewModel SortViewModel { get; set; }
     }
 }

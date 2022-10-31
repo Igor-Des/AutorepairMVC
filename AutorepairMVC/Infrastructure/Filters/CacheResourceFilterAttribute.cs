@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.Filters;
 using System;
 using System.Collections.Generic;
 
-namespace FuelStation.Infrastructure.Filters
+namespace AutorepairMVC.Infrastructure.Filters
 {
     // Простой фильтр ресурсов, кэширующий ViewResult 
     public class CacheResourceFilterAttribute : Attribute, IResourceFilter

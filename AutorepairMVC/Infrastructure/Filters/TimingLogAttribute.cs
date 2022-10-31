@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Logging;
 using System;
 
-namespace FuelStation.Infrastructure.Filters
+namespace AutorepairMVC.Infrastructure.Filters
 {
     //Фильтр ресурсов
     public class TimingLogAttribute : Attribute, IResourceFilter

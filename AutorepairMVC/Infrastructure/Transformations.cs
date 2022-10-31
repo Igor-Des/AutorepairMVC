@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace FuelStation.Infrastructure
+namespace AutorepairMVC.Infrastructure
 {
     //Преобразование словаря в объект
     public static class Transformations

@@ -3,22 +3,22 @@
     public enum SortState
     {
         No, // не сортировать
-        MechanicAsc,    // по топливу по возрастанию
-        MechanicDesc,   // по топливу по убыванию
-        CarAsc, // по емкости возрастанию
-        CarDesc    // по емкости по убыванию
+        MechanicTypeAsc,    
+        MechanicTypeDesc,   
+        CostTypeAsc,
+        CostTypeDesc   
     }
 
     public class SortViewModel
     {
         public SortState MechanicTypeSort { get; set; } // значение для сортировки по механикам
-        public SortState CarTypeSort { get; set; }    // значение для сортировки по машинам
+        public SortState CostTypeSort { get; set; }    // значение для сортировки по цене 
         public SortState CurrentState { get; set; }     // текущее значение сортировки
 
         public SortViewModel(SortState sortOrder)
         {
-            MechanicTypeSort = sortOrder == SortState.MechanicAsc ? SortState.MechanicDesc : SortState.MechanicAsc;
-            CarTypeSort = sortOrder == SortState.CarAsc ? SortState.CarDesc : SortState.CarAsc;
+            MechanicTypeSort = sortOrder == SortState.MechanicTypeAsc ? SortState.MechanicTypeDesc : SortState.MechanicTypeAsc;
+            CostTypeSort = sortOrder == SortState.CostTypeAsc ? SortState.CostTypeDesc : SortState.CostTypeAsc;
             CurrentState = sortOrder;
         }
     }

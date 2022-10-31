@@ -2,7 +2,7 @@
 using System;
 using System.IO;
 
-namespace FuelStation.Infrastructure
+namespace AutorepairMVC.Infrastructure
 {
     //
     public class FileLogger : ILogger

@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc.Filters;
 using System;
 
-namespace FuelStation.Infrastructure.Filters
+namespace AutorepairMVC.Infrastructure.Filters
 {
     //Фильтр исключений
     public class ExceptionFilterAttribute : Attribute, IExceptionFilter

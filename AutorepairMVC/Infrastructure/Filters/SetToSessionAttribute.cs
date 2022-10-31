@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace FuelStation.Infrastructure.Filters
+namespace AutorepairMVC.Infrastructure.Filters
 {
     //Фильтр действий для запись в сессию данных из ModelState
     public class SetToSessionAttribute : Attribute, IActionFilter

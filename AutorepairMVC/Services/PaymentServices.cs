@@ -1,26 +1,18 @@
 ﻿using AutorepairMVC.Data;
 using AutorepairMVC.Models;
 using AutorepairMVC.ViewModels;
-using AutorepairMVC.Infrastructure;
-using AutorepairMVC.Infrastructure.Filters;
-using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
-using System.Threading.Tasks;
 
-namespace AutorepairMVC.Controllers
+namespace AutorepairMVC.Services
 {
-    [ExceptionFilter]
-    [TypeFilter(typeof(TimingLogAttribute))]
-    public class HomeController : Controller
+    public class PaymentServices : IPaymentServices
     {
         private readonly AutorepairContext _db;
-        public HomeController(AutorepairContext db)
+        public PaymentServices(AutorepairContext context)
         {
-            _db = db;
+            _db = context;
         }
-        public IActionResult Index()
+        public HomeViewModel GetHomeViewModel(int numberRows = 10)
         {
-            int numberRows = 10;
             List<Car> cars = _db.Cars.Take(numberRows).ToList();
             List<Owner> owners = _db.Owners.Take(numberRows).ToList();
             List<Mechanic> mechanics = _db.Mechanics.Take(numberRows).ToList();
@@ -46,8 +38,7 @@ namespace AutorepairMVC.Controllers
                 Mechanics = mechanics,
                 Payments = payments
             };
-            return View(homeViewModel);
+            return homeViewModel;
         }
-
     }
 }

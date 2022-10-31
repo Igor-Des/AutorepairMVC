@@ -7,7 +7,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Views\Payments\**" />
+    <Content Remove="Views\Payments\**" />
+    <EmbeddedResource Remove="Views\Payments\**" />
+    <None Remove="Views\Payments\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="..\.editorconfig" Link=".editorconfig" />
+    <None Include="Views\Payments\Create.cshtml" />
+    <None Include="Views\Payments\Delete.cshtml" />
+    <None Include="Views\Payments\Details.cshtml" />
+    <None Include="Views\Payments\Edit.cshtml" />
+    <None Include="Views\Payments\Index.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -19,12 +31,6 @@
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.10" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Services\" />
-    <Folder Include="Views\Owner\" />
-    <Folder Include="Views\Payments\" />
   </ItemGroup>
 
 </Project>

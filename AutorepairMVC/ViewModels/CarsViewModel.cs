@@ -2,9 +2,8 @@
 
 namespace AutorepairMVC.ViewModels
 {
-    public class CarOwnerViewModel
+    public class CarsViewModel
     {
         public IEnumerable<CarViewModel> Cars { get; set; }
-        public IEnumerable<Owner> Owners { get; set; }
     }
 }

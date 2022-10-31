@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 
-namespace FuelStation.Infrastructure
+namespace AutorepairMVC.Infrastructure
 {
     public static class FileLoggerExtensions
     {

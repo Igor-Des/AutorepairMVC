@@ -2,7 +2,7 @@
 using Newtonsoft.Json;
 using System.Collections.Generic;
 
-namespace FuelStation.Infrastructure
+namespace AutorepairMVC.Infrastructure
 {
     // Методы расширения для ISession
     public static class SessionExtensions
@@ -13,7 +13,7 @@ namespace FuelStation.Infrastructure
             session.SetString(key, JsonConvert.SerializeObject(value));
         }
         //Считывание параметризованного объекта из сессии
-        public static T? Get<T>(this ISession session, string key)
+        public static T Get<T>(this ISession session, string key)
         {
             var value = session.GetString(key);
             return value == null ? default(T) : JsonConvert.DeserializeObject<T>(value);
@@ -24,12 +24,10 @@ namespace FuelStation.Infrastructure
             session.SetString(key, JsonConvert.SerializeObject(dictionary));
         }
         //Считывание объекта типа Dictionary<string, string> из сессии
-        public static Dictionary<string, string>? Get(this ISession session, string key)
+        public static Dictionary<string, string> Get(this ISession session, string key)
         {
             var value = session.GetString(key);
             return value == null ? default(Dictionary<string, string>) : JsonConvert.DeserializeObject<Dictionary<string, string>>(value);
         }
-
- 
     }
 }
