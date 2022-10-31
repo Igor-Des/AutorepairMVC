@@ -1,0 +1,70 @@
+﻿@model AutorepairMVC.ViewModels.CarViewModel
+@{
+    ViewData["Title"] = "Car Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="text-center">
+    <h1 class="display-4">Car & owner / Car page</h1>
+</div>
+
+<!-- table for owners-->
+<table class="custom-table table-owners table-owners__home-page">
+    <caption>table with information about owners</caption>
+    <tr>
+        <th>Код владельца</th>
+        <th>Имя</th>
+        <th>Фамилия</th>
+        <th>Отчество</th>
+        <th>Номер ВУ</th>
+        <th>Адрес</th>
+        <th>Телефон</th>
+    </tr>
+    @foreach (var owner in Model.Owners)
+    {
+        <tr>
+            <td>@owner.OwnerId</td>
+            <td>@owner.FirstName</td>
+            <td>@owner.MiddleName</td>
+            <td>@owner.LastName</td>
+            <td>@owner.DriverLicenseNumber</td>
+            <td>@owner.Address</td>
+            <td>@owner.Phone</td>
+
+        </tr>
+    }
+</table>
+
+
+<!-- table for cars-->
+<table class="custom-table table-cars table-cars__home-page">
+    <caption>table with information about cars</caption>
+    <tr>
+        <th>Код авто</th>
+        <th>Марка</th>
+        <th>Мощность</th>
+        <th>Цвет</th>
+        <th>Гос.Номер</th>
+        <th>Код владельца</th>
+        <th>Год</th>
+        <th>ВИН</th>
+        <th>Номер двигателя</th>
+        <th>Дата поступления</th>
+    </tr>
+    @foreach (var car in Model.Cars)
+    {
+        <tr>
+            <td>@car.CarId</td>
+            <td>@car.Brand</td>
+            <td>@car.Power</td>
+            <td>@car.Color</td>
+            <td>@car.StateNumber</td>
+            <td>@car.OwnerId</td>
+            <td>@car.Year</td>
+            <td>@car.VIN</td>
+            <td>@car.EngineNumber</td>
+            <td>@car.AdmissionDate.ToShortDateString()</td>
+        </tr>
+    }
+</table>
