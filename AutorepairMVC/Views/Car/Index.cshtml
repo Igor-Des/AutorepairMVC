@@ -1,4 +1,4 @@
-﻿@model AutorepairMVC.ViewModels.CarViewModel
+﻿@model AutorepairMVC.ViewModels.CarOwnerViewModel
 @{
     ViewData["Title"] = "Car Page";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -46,7 +46,7 @@
         <th>Мощность</th>
         <th>Цвет</th>
         <th>Гос.Номер</th>
-        <th>Код владельца</th>
+        <th>ФИО владелеца</th>
         <th>Год</th>
         <th>ВИН</th>
         <th>Номер двигателя</th>
@@ -60,7 +60,7 @@
             <td>@car.Power</td>
             <td>@car.Color</td>
             <td>@car.StateNumber</td>
-            <td>@car.OwnerId</td>
+            <td>@car.OwnerFIO</td>
             <td>@car.Year</td>
             <td>@car.VIN</td>
             <td>@car.EngineNumber</td>

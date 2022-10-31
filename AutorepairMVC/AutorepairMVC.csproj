@@ -23,6 +23,7 @@
 
   <ItemGroup>
     <Folder Include="Services\" />
+    <Folder Include="Views\Owner\" />
     <Folder Include="Views\Payments\" />
   </ItemGroup>
 

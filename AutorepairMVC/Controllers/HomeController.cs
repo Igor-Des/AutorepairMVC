@@ -25,7 +25,7 @@ namespace AutorepairMVC.Controllers
             List<Mechanic> mechanics = _db.Mechanics.Take(numberRows).ToList();
 
             List<PaymentViewModel> payments = _db.Payments
-                .OrderByDescending(d => d.Date)
+                .OrderByDescending(d => d.PaymentId)
                 .Select(p => new PaymentViewModel
                 {
                     PaymentId = p.PaymentId,

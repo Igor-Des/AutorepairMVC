@@ -34,7 +34,7 @@ namespace AutorepairMVC.Models
         [Display(Name = "Номер двигателя")]
         public string EngineNumber { get; set; }
 
-        [Display(Name = "Дата поступления в автомастерскую")]
+        [Display(Name = "Дата поступления")]
         [DataType(DataType.Date)]
         public DateTime AdmissionDate { get; set; }
 
