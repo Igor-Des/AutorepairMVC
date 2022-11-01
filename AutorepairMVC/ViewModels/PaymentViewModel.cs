@@ -6,7 +6,6 @@ namespace AutorepairMVC.ViewModels
 {
     public class PaymentViewModel
     {
-
         public int PaymentId { get; set; }
 
         [Display(Name = "ВИН авто")]

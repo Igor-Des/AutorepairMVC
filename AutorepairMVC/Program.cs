@@ -4,20 +4,19 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// add MVC
+builder.Services.AddMvc();
 builder.Services.AddControllersWithViews();
 
 string connString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<AutorepairContext>(options => options.UseSqlServer(connString));
 
-// добавление кэширования
+// add кэширования
 builder.Services.AddMemoryCache();
-// добавление поддержки сессии
+
+// add поддержки сессии
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession();
-//Использование MVC
-builder.Services.AddControllersWithViews();
-
 
 var app = builder.Build();
 

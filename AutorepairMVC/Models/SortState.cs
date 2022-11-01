@@ -5,6 +5,8 @@
         MechanicTypeAsc,
         MechanicTypeDesc,
         CostTypeAsc,
-        CostTypeDesc
+        CostTypeDesc,
+        ReportProgressAsc,
+        ReportProgressDesc,
     }
 }
