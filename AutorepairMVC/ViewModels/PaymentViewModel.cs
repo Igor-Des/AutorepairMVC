@@ -1,6 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-
+using AutorepairMVC.Models;
 
 namespace AutorepairMVC.ViewModels
 {
@@ -24,7 +24,5 @@ namespace AutorepairMVC.ViewModels
 
         [Display(Name = "Выполненная работа")]
         public string ProgressReport { get; set; }
-        // Порядок сортировки
-        public SortViewModel SortViewModel { get; set; }
     }
 }

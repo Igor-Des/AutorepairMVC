@@ -8,7 +8,5 @@ namespace AutorepairMVC.ViewModels
 
         //Свойство для фильтрации
         public PaymentViewModel PaymentViewModel { get; set; }
-        //Свойство для навигации по страницам
-        public PageViewModel PageViewModel { get; set; }
     }
 }

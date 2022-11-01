@@ -36,8 +36,8 @@ app.UseStaticFiles();
 app.UseSession();
 // добавляем компонент middleware по инициализации базы данных и производим инициализацию базы
 app.UseDbInitializer();
-// добавляем компонент middleware для реализации кэширования и записывем данные в кэш
-app.UseOperatinCache("Payments 10"); // in future
+
+
 app.UseRouting();
 app.UseAuthorization();
 

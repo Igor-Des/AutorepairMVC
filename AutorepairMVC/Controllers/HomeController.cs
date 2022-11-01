@@ -1,16 +1,12 @@
 ﻿using AutorepairMVC.Data;
 using AutorepairMVC.Models;
 using AutorepairMVC.ViewModels;
-using AutorepairMVC.Infrastructure;
-using AutorepairMVC.Infrastructure.Filters;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using System.Threading.Tasks;
 
 namespace AutorepairMVC.Controllers
 {
-    [ExceptionFilter]
-    [TypeFilter(typeof(TimingLogAttribute))]
     public class HomeController : Controller
     {
         private readonly AutorepairContext _db;
