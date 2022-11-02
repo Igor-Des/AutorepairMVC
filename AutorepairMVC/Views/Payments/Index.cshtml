@@ -1,0 +1,53 @@
+﻿@model AutorepairMVC.ViewModels.PaymentsViewModel
+@{
+    ViewData["Title"] = "Payments";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    <p>Введите VIN машниы: </p>
+    @Html.TextBox("searchCarVIN", "")
+    <p>Введите выполненную работу:</p>
+    @Html.TextBox("searchProgressReport", "")
+    <p><input type="submit" value="Отправить" /></p>
+}
+
+<table class="custom-table table-payments table-payments__home-page">
+    <caption>Payments</caption>
+    <tr>
+        <th>
+            <a asp-action="Index" asp-route-sortOrder="@ViewBag.PaymentId">
+                Код
+            </a>
+        </th>
+        <td>ВИН авто</td>
+        <td>Дата</td>
+        <th>
+            <a asp-action="Index" asp-route-sortOrder="@ViewBag.Cost">
+                Цена
+            </a>
+        </th>
+        <th>
+            <a asp-action="Index" asp-route-sortOrder="@ViewBag.MechanicFIO">
+                ФИО Механика
+            </a>
+        </th>
+        <th>
+            <a asp-action="Index" asp-route-sortOrder="@ViewBag.ReportProgress">
+                ReportProgress
+            </a>
+        </th>
+    </tr>
+    @foreach (var payment in Model.Payments)
+    {
+        <tr>
+            <td>@payment.PaymentId</td>
+            <td>@payment.CarVIN</td>
+            <td>@payment.Date.ToShortDateString()</td>
+            <td>@payment.Cost</td>
+            <td>@payment.MechanicFIO</td>
+            <td>@payment.ProgressReport</td>
+        </tr>
+    }
+</table>

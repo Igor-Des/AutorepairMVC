@@ -23,8 +23,11 @@ body {
     font-family: "Lucida Grande", sans-serif;
 }
 
-.custom-table td, .custom-table th {
+.custom-table td {
     padding: 5px;
+}
+.custom-table th {
+    padding: 5px 15px;
 }
 
 .custom-table th {
@@ -34,10 +37,6 @@ body {
 
 .custom-table tr:nth-child(2n) {
     background: #e5d9d9;
-}
-
-.custom-table td:last-of-type {
-    text-align: center;
 }
 
 .custom-table a {

@@ -1,4 +1,4 @@
-﻿@model AutorepairMVC.ViewModels.CarOwnerViewModel
+﻿@model AutorepairMVC.ViewModels.CarsViewModel
 @{
     ViewData["Title"] = "Car Page";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -6,36 +6,8 @@
 
 
 <div class="text-center">
-    <h1 class="display-4">Car & owner / Car page</h1>
+    <h1 class="display-4">Информация об автомобилях в автомастерской</h1>
 </div>
-
-<!-- table for owners-->
-<table class="custom-table table-owners table-owners__home-page">
-    <caption>table with information about owners</caption>
-    <tr>
-        <th>Код владельца</th>
-        <th>Имя</th>
-        <th>Фамилия</th>
-        <th>Отчество</th>
-        <th>Номер ВУ</th>
-        <th>Адрес</th>
-        <th>Телефон</th>
-    </tr>
-    @foreach (var owner in Model.Owners)
-    {
-        <tr>
-            <td>@owner.OwnerId</td>
-            <td>@owner.FirstName</td>
-            <td>@owner.MiddleName</td>
-            <td>@owner.LastName</td>
-            <td>@owner.DriverLicenseNumber</td>
-            <td>@owner.Address</td>
-            <td>@owner.Phone</td>
-
-        </tr>
-    }
-</table>
-
 
 <!-- table for cars-->
 <table class="custom-table table-cars table-cars__home-page">

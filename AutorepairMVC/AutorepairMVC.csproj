@@ -21,10 +21,4 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Services\" />
-    <Folder Include="Views\Owner\" />
-    <Folder Include="Views\Payments\" />
-  </ItemGroup>
-
 </Project>

@@ -17,10 +17,10 @@ namespace AutorepairMVC.Data
                 return;   // База данных инициализирована
             }
 
-            int mechanicNumber = 50;
-            int ownerNumber = 50;
-            int carNumber = 50;
-            int paymentNumber = 50;
+            int mechanicNumber = 150;
+            int ownerNumber = 150;
+            int carNumber = 300;
+            int paymentNumber = 500;
             int qualificationNumber = 6;
             Random randObj = new Random(1);
                         

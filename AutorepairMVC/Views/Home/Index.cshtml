@@ -10,12 +10,12 @@
 <table class="custom-table table-cars table-cars__home-page">
     <caption>table with information about cars</caption>
     <tr>
-        <th>Код авто</th>
+        <th>Код</th>
         <th>Марка</th>
         <th>Мощность</th>
         <th>Цвет</th>
         <th>Гос.Номер</th>
-        <th>Код владельца</th>
+        <th>Владелец а/м</th>
         <th>Год</th>
         <th>ВИН</th>
         <th>Номер двигателя</th>
@@ -29,7 +29,7 @@
             <td>@car.Power</td>
             <td>@car.Color</td>
             <td>@car.StateNumber</td>
-            <td>@car.OwnerId</td>
+            <td>@car.OwnerFIO</td>
             <td>@car.Year</td>
             <td>@car.VIN</td>
             <td>@car.EngineNumber</td>
@@ -42,7 +42,7 @@
 <table class="custom-table table-mechanics table-mechanics__home-page">
     <caption>table with information about mechanics</caption>
     <tr>
-        <th>Код механика</th>
+        <th>Код</th>
         <th>Имя</th>
         <th>Фамилия</th>
         <th>Отчество</th>
@@ -56,7 +56,7 @@
             <td>@mechanic.FirstName</td>
             <td>@mechanic.MiddleName</td>
             <td>@mechanic.LastName</td>
-            <td>@mechanic.QualificationId</td>
+            <td>@mechanic.QualificationName</td>
             <td>@mechanic.Experience</td>
 
         </tr>
@@ -67,7 +67,7 @@
 <table class="custom-table table-owners table-owners__home-page">
     <caption>table with information about owners</caption>
     <tr>
-        <th>Код владельца</th>
+        <th>Код</th>
         <th>Имя</th>
         <th>Фамилия</th>
         <th>Отчество</th>
@@ -94,7 +94,7 @@
 <table class="custom-table table-payments table-payments__home-page">
     <caption>table with information about payments</caption>
     <tr>
-        <th>Код платежа</th>
+        <th>Код</th>
         <th>ВИН авто</th>
         <th>Дата</th>
         <th>Цена</th>
@@ -110,7 +110,6 @@
             <td>@payment.Cost</td>
             <td>@payment.MechanicFIO</td>
             <td>@payment.ProgressReport</td>
-
         </tr>
     }
 </table>
