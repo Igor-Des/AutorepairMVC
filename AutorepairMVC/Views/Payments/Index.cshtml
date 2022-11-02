@@ -6,10 +6,12 @@
 
 @using (Html.BeginForm())
 {
-    <p>Введите VIN машниы: </p>
+    <p>Введите VIN машины: 
     @Html.TextBox("searchCarVIN", "")
-    <p>Введите выполненную работу:</p>
-    @Html.TextBox("searchProgressReport", "")
+    </p>
+    <p>Введите выполненную работу:
+        @Html.TextBox("searchProgressReport", "")
+    </p>
     <p><input type="submit" value="Отправить" /></p>
 }
 

@@ -18,6 +18,7 @@ namespace AutorepairMVC.Controllers
         [ResponseCache(Location = ResponseCacheLocation.Any, Duration = 258)]
         public IActionResult Index(SortState sortOrder, string currentFilter, string searchCarVIN, string searchProgressReport)
         {
+            int numberRows = 300;
             if (searchCarVIN == null && searchProgressReport == null)
             {
                 searchCarVIN = currentFilter;
@@ -33,6 +34,7 @@ namespace AutorepairMVC.Controllers
                                                     join m in _context.Mechanics
                                                     on p.MechanicId equals m.MechanicId
                                                     orderby p.PaymentId
+                                                    where p.PaymentId < numberRows
                                                     select new PaymentViewModel
                                                     {
                                                         PaymentId = p.PaymentId,
@@ -42,6 +44,7 @@ namespace AutorepairMVC.Controllers
                                                         MechanicFIO = m.FirstName + " " + m.MiddleName + " " + m.LastName,
                                                         ProgressReport = p.ProgressReport,
                                                     };
+
             payments = Search(payments, sortOrder, searchCarVIN, searchProgressReport);
 
             PaymentsViewModel paymentViewModel = new PaymentsViewModel
@@ -51,6 +54,8 @@ namespace AutorepairMVC.Controllers
             return View(paymentViewModel);
         }
 
+
+        [ResponseCache(Location = ResponseCacheLocation.Any, Duration = 258)]
         private IQueryable<PaymentViewModel> Search(IQueryable<PaymentViewModel> payments, SortState sortOrder, string searchCarVIN, string searchProgressReport)
         {
             if (!String.IsNullOrEmpty(searchCarVIN) && !String.IsNullOrEmpty(searchProgressReport))

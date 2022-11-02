@@ -14,6 +14,8 @@ namespace AutorepairMVC.Controllers
         {
             _db = db;
         }
+
+        [ResponseCache(Location = ResponseCacheLocation.Any, Duration = 258)]
         public IActionResult Index()
         {
             int numberRows = 15;
@@ -21,7 +23,7 @@ namespace AutorepairMVC.Controllers
             List<Car> cars = _db.Cars.Take(numberRows).ToList();
 
             List<CarViewModel> carsView = _db.Cars
-                .OrderByDescending(d => d.CarId)
+                .OrderBy(d => d.CarId)
                 .Select(c => new CarViewModel
                 {
                     CarId = c.CarId,
