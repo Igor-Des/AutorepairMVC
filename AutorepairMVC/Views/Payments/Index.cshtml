@@ -7,16 +7,20 @@
 @using (Html.BeginForm())
 {
     <p>Введите VIN машниы: </p>
-    @Html.TextBox("searchCarVIN", "Car VIN")
+    @Html.TextBox("searchCarVIN", "")
     <p>Введите выполненную работу:</p>
-    @Html.TextBox("searchProgressReport", "Progress Report: ")
+    @Html.TextBox("searchProgressReport", "")
     <p><input type="submit" value="Отправить" /></p>
 }
 
 <table class="custom-table table-payments table-payments__home-page">
     <caption>Payments</caption>
     <tr>
-        <td>Код</td>
+        <th>
+            <a asp-action="Index" asp-route-sortOrder="@ViewBag.PaymentId">
+                Код
+            </a>
+        </th>
         <td>ВИН авто</td>
         <td>Дата</td>
         <th>

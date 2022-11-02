@@ -2,6 +2,8 @@
 {
     public enum SortState
     {
+        PaymentIdAsc,
+        PaymentIdDesc,
         MechanicTypeAsc,
         MechanicTypeDesc,
         CostTypeAsc,

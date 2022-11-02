@@ -19,10 +19,12 @@ namespace AutorepairMVC.Controllers
             _context = context;
         }
 
-        // GET: Owners
+
+        [ResponseCache(Location = ResponseCacheLocation.Any, Duration = 258)]
         public async Task<IActionResult> Index()
         {
-              return View(await _context.Owners.ToListAsync());
+            Thread.Sleep(3000);
+            return View(await _context.Owners.ToListAsync());
         }
     }
 }

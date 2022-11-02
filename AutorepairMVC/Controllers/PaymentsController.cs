@@ -32,6 +32,7 @@ namespace AutorepairMVC.Controllers
                                                     on p.CarId equals c.CarId
                                                     join m in _context.Mechanics
                                                     on p.MechanicId equals m.MechanicId
+                                                    orderby p.PaymentId
                                                     select new PaymentViewModel
                                                     {
                                                         PaymentId = p.PaymentId,
@@ -56,12 +57,27 @@ namespace AutorepairMVC.Controllers
             {
                 payments = payments.Where(p => p.CarVIN.Contains(searchCarVIN) & p.ProgressReport.Contains(searchProgressReport));
             }
+            else if (!String.IsNullOrEmpty(searchCarVIN) && String.IsNullOrEmpty(searchProgressReport))
+            {
+                payments = payments.Where(p => p.CarVIN.Contains(searchCarVIN));
+            }
+            else if (String.IsNullOrEmpty(searchCarVIN) && !String.IsNullOrEmpty(searchProgressReport))
+            {
+                payments = payments.Where(p => p.ProgressReport.Contains(searchProgressReport));
+            }
+            else
+            {
+                payments = payments.OrderBy(p => p.PaymentId);
+            }
 
+            ViewData["PaymentId"] = sortOrder == SortState.PaymentIdAsc ? SortState.PaymentIdDesc : SortState.PaymentIdAsc;
             ViewData["MechanicFIO"] = sortOrder == SortState.MechanicTypeAsc ? SortState.MechanicTypeDesc : SortState.MechanicTypeAsc;
             ViewData["Cost"] = sortOrder == SortState.CostTypeAsc ? SortState.CostTypeDesc : SortState.CostTypeAsc;
             ViewData["ReportProgress"] = sortOrder == SortState.ReportProgressAsc ? SortState.ReportProgressDesc : SortState.ReportProgressAsc;
             payments = sortOrder switch
             {
+                SortState.PaymentIdAsc => payments.OrderBy(p => p.PaymentId),
+                SortState.PaymentIdDesc => payments.OrderByDescending(p => p.PaymentId),
                 SortState.MechanicTypeAsc => payments.OrderBy(p => p.MechanicFIO),
                 SortState.MechanicTypeDesc => payments.OrderByDescending(p => p.MechanicFIO),
                 SortState.CostTypeAsc => payments.OrderBy(p => p.Cost),
